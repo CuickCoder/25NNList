@@ -189,6 +189,9 @@ text = "NONE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="gui_input" from="PlayerList/TextEdit" to="." method="_on_text_edit_gui_input"]
+[connection signal="pressed" from="PlayerList/Button" to="." method="update_player"]
+[connection signal="pressed" from="ControlButtons/VBoxContainer/UpdateListButton" to="." method="update_lists"]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
