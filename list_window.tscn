@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://gr28fom34hb3"]
+
+[node name="ListWindow" type="Node2D"]

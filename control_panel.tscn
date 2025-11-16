@@ -1,0 +1,194 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkfdcvbsr1tcp"]
+
+[ext_resource type="Script" path="res://control_panel.gd" id="1_avyx1"]
+
+[node name="ControlPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avyx1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = 16.0
+offset_right = 168.0
+offset_bottom = 78.0
+grow_horizontal = 2
+text = "Santa's List Control Panel"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="PlayerList" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -186.0
+offset_right = 259.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -133.0
+offset_right = 152.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter Player Name..."
+
+[node name="Label" type="Label" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_top = 16.0
+offset_right = 155.0
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "Players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -20.0
+offset_right = 213.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player Name will appear here!"
+
+[node name="Button" type="Button" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -65.0
+offset_right = 75.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Add Player"
+
+[node name="ControlButtons" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.0
+offset_top = 80.0
+offset_right = 259.0
+offset_bottom = 364.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = -9.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpdateListButton" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Update List Names"
+
+[node name="LoadNaughty" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Load Naughty List"
+
+[node name="LoadNice" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Load Nice List"
+
+[node name="PlayAudioHint" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play Audio Hint"
+
+[node name="OpenListWindow" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Open List Window"
+
+[node name="StateViewer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.0
+offset_top = 792.0
+offset_right = 259.0
+offset_bottom = 1076.0
+grow_horizontal = 2
+
+[node name="Top" type="Label" parent="StateViewer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 13.0
+offset_right = 106.0
+offset_bottom = 63.0
+grow_horizontal = 2
+text = "Current State:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentStateLabel" type="Label" parent="StateViewer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -54.0
+offset_right = 150.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
+[connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
+[connection signal="pressed" from="ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
