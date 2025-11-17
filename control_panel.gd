@@ -58,9 +58,11 @@ func _open_list_window() -> void:
 	if state == "NAUGHTY":
 		var n = naughty_list_scene.instantiate()
 		w.add_child(n)
+		update_lists()
 	elif state == "NICE":
 		var n = nice_list_scene.instantiate()
 		w.add_child(n)
+		update_lists()
 	
 func update_list_window():
 	var w = get_tree().get_root().find_child("list_window", true, false)

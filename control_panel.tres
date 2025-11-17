@@ -79,13 +79,13 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kuat"]
-bg_color = Color(0, 0.72, 0.228, 0.835294)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c083"]
+bg_color = Color(0.72, 0, 0, 0.835294)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0.960155, 0.379154, 1)
+border_color = Color(0.96, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -144,7 +144,7 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_1y638")
 Panel/styles/panel = SubResource("StyleBoxFlat_uvi4i")
 RedButton/base_type = &"Button"
 RedButton/styles/disabled = SubResource("StyleBoxFlat_x6nc5")
-RedButton/styles/focus = SubResource("StyleBoxFlat_4kuat")
+RedButton/styles/focus = SubResource("StyleBoxFlat_6c083")
 RedButton/styles/hover = SubResource("StyleBoxFlat_w6ui8")
 RedButton/styles/normal = SubResource("StyleBoxFlat_60sg5")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_wbl2x")
