@@ -37,6 +37,12 @@ func change_state(new_state):
 	
 func update_status():
 	$StateViewer/CurrentStateLabel.text = state
+	if state == "NAUGHTY":
+		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(173, 00, 00, 255))
+	elif state == "NICE":
+		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(00, 173, 55, 255)) 
+	else:
+		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(255, 255, 255, 255))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -74,7 +80,9 @@ func update_list_window():
 
 func update_player() -> void:
 	player_name = $PlayerList/TextEdit.text
-	$PlayerList/RichTextLabel.text = player_name
+	$PlayerList/TextEdit.text = ""
+	$PlayerList/PlayerName.text = player_name
+	$PlayerList/PlayerName.adjust_font_to_fit()
 	naughty_list.insert(2, player_name)
 	nice_list.insert(2, player_name)
 	update_lists()
