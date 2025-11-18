@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkfdcvbsr1tcp"]
 
-[ext_resource type="Script" path="res://control_panel.gd" id="1_avyx1"]
+[ext_resource type="Script" uid="uid://cmuex4vid7rha" path="res://control_panel.gd" id="1_avyx1"]
 [ext_resource type="Texture2D" uid="uid://c6k1u4aqu7fp5" path="res://assets/christmas-wallpaper.jpg" id="2_f5hji"]
 [ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="3_1x1sv"]
-[ext_resource type="Script" path="res://player_name.gd" id="4_ewo2d"]
+[ext_resource type="Script" uid="uid://iw0xtb6o2iuq" path="res://player_name.gd" id="4_ewo2d"]
 
 [node name="ControlPanel" type="Control"]
 layout_mode = 3

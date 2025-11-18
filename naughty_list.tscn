@@ -1,10 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://caskco6oi8ur3"]
+[gd_scene load_steps=11 format=3 uid="uid://caskco6oi8ur3"]
 
-[ext_resource type="Script" path="res://list_script.gd" id="1_16oxf"]
+[ext_resource type="Script" uid="uid://cflq1cf18t0cy" path="res://list_script.gd" id="1_16oxf"]
 [ext_resource type="Texture2D" uid="uid://co8es68fnj615" path="res://icon.svg" id="1_fl1kr"]
+[ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="2_ve5nc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmgx4"]
-bg_color = Color(0.541112, 0.112049, 0.154636, 1)
+bg_color = Color(0.5411765, 0.11372549, 0.15294118, 0)
+
+[sub_resource type="Animation" id="Animation_ve5nc"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4y1km"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Names/Name3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r6wbo"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_erxtm"]
+resource_name = "fade_out_player_name"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Names/Name3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iraxc"]
+resource_name = "fade_in_player_name"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Names/Name3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6wbo"]
+_data = {
+&"RESET": SubResource("Animation_4y1km"),
+&"fade_in": SubResource("Animation_ve5nc"),
+&"fade_in_player_name": SubResource("Animation_iraxc"),
+&"fade_out": SubResource("Animation_r6wbo"),
+&"fade_out_player_name": SubResource("Animation_erxtm")
+}
 
 [node name="NaughtyList" type="Panel"]
 anchors_preset = 15
@@ -29,6 +126,8 @@ offset_top = 16.0
 offset_right = 206.0
 offset_bottom = 71.0
 grow_horizontal = 2
+theme = ExtResource("2_ve5nc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 text = "Naughty List"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -46,14 +145,18 @@ offset_right = 274.0
 offset_bottom = 509.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ve5nc")
+theme_override_constants/separation = 20
 
-[node name="Name1" type="RichTextLabel" parent="Names"]
+[node name="Name1" type="Label" parent="Names"]
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
 text = "NAME MCNAMEFACE
 NAUGHTY"
-fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Symbol1" type="TextureRect" parent="Names"]
 layout_mode = 2
@@ -61,13 +164,15 @@ size_flags_vertical = 3
 texture = ExtResource("1_fl1kr")
 stretch_mode = 3
 
-[node name="Name2" type="RichTextLabel" parent="Names"]
+[node name="Name2" type="Label" parent="Names"]
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
 text = "NAME MCNAMEFACE
 NAUGHTY"
-fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Symbol2" type="TextureRect" parent="Names"]
 layout_mode = 2
@@ -75,13 +180,15 @@ size_flags_vertical = 3
 texture = ExtResource("1_fl1kr")
 stretch_mode = 3
 
-[node name="Name3" type="RichTextLabel" parent="Names"]
+[node name="Name3" type="Label" parent="Names"]
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
 text = "NAME MCNAMEFACE
 NAUGHTY"
-fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Symbol3" type="TextureRect" parent="Names"]
 layout_mode = 2
@@ -89,13 +196,15 @@ size_flags_vertical = 3
 texture = ExtResource("1_fl1kr")
 stretch_mode = 3
 
-[node name="Name4" type="RichTextLabel" parent="Names"]
+[node name="Name4" type="Label" parent="Names"]
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
 text = "NAME MCNAMEFACE
 NAUGHTY"
-fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Symbol4" type="TextureRect" parent="Names"]
 layout_mode = 2
@@ -103,10 +212,17 @@ size_flags_vertical = 3
 texture = ExtResource("1_fl1kr")
 stretch_mode = 3
 
-[node name="Name5" type="RichTextLabel" parent="Names"]
+[node name="Name5" type="Label" parent="Names"]
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = true
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
 text = "NAME MCNAMEFACE
 NAUGHTY"
-fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r6wbo")
+}

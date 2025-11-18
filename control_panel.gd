@@ -22,13 +22,13 @@ func update_lists():
 	var w = get_tree().get_root().find_child("list_window", true, false)
 	if w == null:
 		return
-	if w.get_child_count() == 0:
+	if w.get_child_count() == 0 or w.get_child(0).get_child_count() == 0:
 		return
 	else:
 		if state == "NAUGHTY":
-			w.find_child("NaughtyList", true, false).add_list_names(naughty_list, state)
+			w.get_child(0).find_child("NaughtyList", true, false).add_list_names(naughty_list, state)
 		if state == "NICE":
-			w.find_child("NiceList", true, false).add_list_names(nice_list, state)
+			w.get_child(0).find_child("NiceList", true, false).add_list_names(nice_list, state)
 	
 func change_state(new_state):
 	state = new_state
@@ -39,30 +39,66 @@ func update_status():
 	$StateViewer/CurrentStateLabel.text = state
 	if state == "NAUGHTY":
 		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(173, 00, 00, 255))
+		open_list()
 	elif state == "NICE":
 		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(00, 173, 55, 255)) 
+		open_list()
 	else:
 		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(255, 255, 255, 255))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _open_list_window() -> void:
-	var w = Window.new()
-	w.size = get_viewport_rect().size
-	w.visible = true
-	w.name = "list_window"
-	get_tree().root.add_child(w)
+	var nw = get_tree().get_root().find_child("list_window", true, false)
+	if nw == null:
+		var w = Window.new()
+		w.size = get_viewport_rect().size
+		w.visible = true
+		w.name = "list_window"
+		get_tree().root.add_child(w)
+		#if state == "NAUGHTY":
+			#var n = naughty_list_scene.instantiate()
+			#w.add_child(n)
+			#update_lists()
+		#elif state == "NICE":
+			#var n = nice_list_scene.instantiate()
+			#w.add_child(n)
+			#update_lists()
+	else:
+		if state == "NAUGHTY" or state == "NICE":
+			open_list()
+	
+func open_list():
+	update_lists()
+	var nw = get_tree().get_root().find_child("list_window", true, false)
+	if nw == null:
+		return
+	var l
+	if nw.get_child_count() > 0:
+		l = nw.find_child("AnimatedSprite2D", true, false)
+		l.play("unroll", -1)
+		await l.animation_finished
+	else:
+		var list_scene = preload("res://test_scroll.tscn")
+		l = list_scene.instantiate()
+		nw.add_child(l)
+		l.global_position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 2)
+	l.play("unroll")
+	await l.animation_finished
 	if state == "NAUGHTY":
 		var n = naughty_list_scene.instantiate()
-		w.add_child(n)
-		update_lists()
+		n.modulate = Color("ffffff00")
+		l.add_child(n)
+		var ap = n.find_child("AnimationPlayer", true, false)
+		ap.play("fade_in")
+		await ap.animation_finished
+		ap.play("fade_in_player_name")
 	elif state == "NICE":
 		var n = nice_list_scene.instantiate()
-		w.add_child(n)
-		update_lists()
+		n.modulate = Color("ffffff00")
+		l.add_child(n)
+		var ap = n.find_child("AnimationPlayer", true, false)
+		ap.play("fade_in")
+		await ap.animation_finished
+		ap.play("fade_in_player_name")
 	
 func update_list_window():
 	var w = get_tree().get_root().find_child("list_window", true, false)
@@ -70,14 +106,15 @@ func update_list_window():
 		return
 	for i in w.get_children():
 		i.queue_free()
-	if state == "NAUGHTY":
-		var n = naughty_list_scene.instantiate()
-		w.add_child(n)
-		update_lists()
-	elif state == "NICE":
-		var n = nice_list_scene.instantiate()
-		w.add_child(n)
-		update_lists()
+	open_list()
+	#if state == "NAUGHTY":
+		#var n = naughty_list_scene.instantiate()
+		#w.add_child(n)
+		#update_lists()
+	#elif state == "NICE":
+		#var n = nice_list_scene.instantiate()
+		#w.add_child(n)
+		#update_lists()
 
 
 func update_player() -> void:
