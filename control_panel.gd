@@ -106,7 +106,6 @@ func load_list(n, l):
 	var marker = l.get_node("CenterMarker")
 	n.position = marker.position
 	n.rotation = marker.rotation
-	#n.scale = Vector2(0.6, 0.6)
 	l.add_child(n)
 	update_lists()
 	var ap = n.find_child("AnimationPlayer", true, false)
@@ -139,6 +138,8 @@ func reset_list():
 			if l.has_node(child_name):
 				var child = l.get_node(child_name)
 				await unload_list(child)
+			else:
+				return
 		if scroll_open:
 			var scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
 			scroll_sprite.play_backwards("unroll")
