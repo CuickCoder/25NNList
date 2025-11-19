@@ -145,12 +145,6 @@ offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpdateListButton" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-text = "Update List Names"
-
 [node name="LoadNaughty" type="Button" parent="ControlButtons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -169,6 +163,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_1x1sv")
 theme_type_variation = &"RedButton"
+disabled = true
 text = "Play Audio Hint"
 
 [node name="OpenListWindow" type="Button" parent="ControlButtons/VBoxContainer"]
@@ -176,6 +171,19 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_1x1sv")
 text = "Open List Window"
+
+[node name="ResetList" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+theme_type_variation = &"RedButton"
+text = "Reset List"
+
+[node name="CloseListWindow" type="Button" parent="ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+text = "Close List Window"
 
 [node name="StateViewer" type="Panel" parent="."]
 layout_mode = 1
@@ -224,7 +232,8 @@ vertical_alignment = 1
 [connection signal="gui_input" from="PlayerList/TextEdit" to="." method="_on_text_edit_gui_input"]
 [connection signal="resized" from="PlayerList/PlayerName" to="PlayerList/PlayerName" method="_on_resized"]
 [connection signal="pressed" from="PlayerList/Button" to="." method="update_player"]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/UpdateListButton" to="." method="update_lists"]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
 [connection signal="pressed" from="ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
+[connection signal="pressed" from="ControlButtons/VBoxContainer/ResetList" to="." method="reset_list"]
+[connection signal="pressed" from="ControlButtons/VBoxContainer/CloseListWindow" to="." method="close_list_window"]

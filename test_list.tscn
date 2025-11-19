@@ -2,6 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dtaeqbflutski" path="res://test_scroll.tscn" id="1_redjk"]
 
-[node name="TestList" type="Node2D"]
+[node name="ScrollWrapper" type="Node2D"]
 
-[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_redjk")]
+[node name="ScrollContainer" type="Node2D" parent="."]
+position = Vector2(648, 0)
+rotation = 1.5707964
+
+[node name="ScrollSprite" parent="ScrollContainer" instance=ExtResource("1_redjk")]
+position = Vector2(554, 318.0001)
+rotation = 0.0
+scale = Vector2(0.54696953, 0.54696953)
+
+[node name="CenterMarker" type="Node2D" parent="."]
+position = Vector2(328, 530)

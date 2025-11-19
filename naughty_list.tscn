@@ -1,26 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://caskco6oi8ur3"]
+[gd_scene load_steps=13 format=3 uid="uid://caskco6oi8ur3"]
 
 [ext_resource type="Script" uid="uid://cflq1cf18t0cy" path="res://list_script.gd" id="1_16oxf"]
-[ext_resource type="Texture2D" uid="uid://co8es68fnj615" path="res://icon.svg" id="1_fl1kr"]
 [ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="2_ve5nc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmgx4"]
-bg_color = Color(0.5411765, 0.11372549, 0.15294118, 0)
-
-[sub_resource type="Animation" id="Animation_ve5nc"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[ext_resource type="Texture2D" uid="uid://btkg4a2kxlx3g" path="res://assets/piper piping.png" id="3_4y1km"]
+[ext_resource type="Texture2D" uid="uid://2pl0fru1qao6" path="res://assets/lady dancing.png" id="4_r6wbo"]
+[ext_resource type="Texture2D" uid="uid://bd1lyowtg6off" path="res://assets/maid a milking.png" id="5_erxtm"]
+[ext_resource type="Texture2D" uid="uid://dgsw65p0u61oo" path="res://assets/partridge in a pear tree.png" id="6_iraxc"]
 
 [sub_resource type="Animation" id="Animation_4y1km"]
 length = 0.001
@@ -47,6 +32,48 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ve5nc"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Names/Name3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iraxc"]
+resource_name = "fade_in_player_name"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Names/Name3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_r6wbo"]
@@ -79,21 +106,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_iraxc"]
-resource_name = "fade_in_player_name"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Names/Name3:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6wbo"]
 _data = {
 &"RESET": SubResource("Animation_4y1km"),
@@ -103,7 +115,8 @@ _data = {
 &"fade_out_player_name": SubResource("Animation_erxtm")
 }
 
-[node name="NaughtyList" type="Panel"]
+[node name="NaughtyList" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,24 +126,7 @@ offset_right = -21.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lmgx4")
 script = ExtResource("1_16oxf")
-
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -206.0
-offset_top = 16.0
-offset_right = 206.0
-offset_bottom = 71.0
-grow_horizontal = 2
-theme = ExtResource("2_ve5nc")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "Naughty List"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Names" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -140,13 +136,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -274.0
-offset_top = -397.0
+offset_top = -537.5
 offset_right = 274.0
-offset_bottom = 509.0
+offset_bottom = 537.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ve5nc")
 theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Names"]
+layout_mode = 2
+theme = ExtResource("2_ve5nc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+text = "Naughty List"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Name1" type="Label" parent="Names"]
 layout_mode = 2
@@ -158,11 +162,27 @@ NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Symbol1" type="TextureRect" parent="Names"]
+[node name="Symbol1" type="Control" parent="Names"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+
+[node name="Symbol1" type="TextureRect" parent="Names/Symbol1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.12284
+offset_right = 64.0
+offset_bottom = 64.12284
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("1_fl1kr")
-stretch_mode = 3
+texture = ExtResource("3_4y1km")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Name2" type="Label" parent="Names"]
 layout_mode = 2
@@ -174,11 +194,28 @@ NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Symbol2" type="TextureRect" parent="Names"]
+[node name="Symbol2" type="Control" parent="Names"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+
+[node name="Symbol2" type="TextureRect" parent="Names/Symbol2"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.18445
+offset_right = 64.0
+offset_bottom = 64.18445
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("1_fl1kr")
-stretch_mode = 3
+texture = ExtResource("4_r6wbo")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Name3" type="Label" parent="Names"]
 layout_mode = 2
@@ -190,11 +227,27 @@ NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Symbol3" type="TextureRect" parent="Names"]
+[node name="Symbol3" type="Control" parent="Names"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+
+[node name="Symbol3" type="TextureRect" parent="Names/Symbol3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.18444
+offset_right = 64.0
+offset_bottom = 64.18444
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("1_fl1kr")
-stretch_mode = 3
+texture = ExtResource("5_erxtm")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Name4" type="Label" parent="Names"]
 layout_mode = 2
@@ -206,11 +259,27 @@ NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Symbol4" type="TextureRect" parent="Names"]
+[node name="Symbol4" type="Control" parent="Names"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+
+[node name="Symbol4" type="TextureRect" parent="Names/Symbol4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.06142
+offset_right = 64.0
+offset_bottom = 64.06142
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("1_fl1kr")
-stretch_mode = 3
+texture = ExtResource("6_iraxc")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Name5" type="Label" parent="Names"]
 layout_mode = 2

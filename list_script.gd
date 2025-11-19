@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 func add_list_names(list: Array, state: String):
 	if list.size() < 5:
