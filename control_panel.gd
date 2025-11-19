@@ -60,9 +60,7 @@ func _open_list_window() -> void:
 		w.name = "list_window"
 		w.set_script(load("res://window_script.gd"))
 		get_tree().root.add_child(w)
-	else:
-		if state == "NAUGHTY" or state == "NICE":
-			open_list()
+	open_list()
 	
 func open_list():
 	update_lists()
@@ -88,11 +86,14 @@ func open_list():
 		nw.add_child(l)
 		nw.size_changed.connect(l.on_resized)
 		l.on_resized()
-	if !scroll_open:
+	if !scroll_open and state != "NONE":
 		scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
 		scroll_sprite.play("unroll")
 		await scroll_sprite.animation_finished
 		scroll_open = true
+	elif !scroll_open:
+		scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
+		scroll_sprite.play("unroll", 0.0)
 	if state == "NAUGHTY" or state == "NICE":
 		if state == "NICE":
 			var n = nice_list_scene.instantiate()
