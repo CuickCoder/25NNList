@@ -31,6 +31,7 @@ func update_lists():
 			if w.get_child(0).get_node("NaughtyList") == null:
 				return
 			w.get_child(0).find_child("NaughtyList", true, false).add_list_names(naughty_list, state)
+			w.get_child(0).get_node("NaughtyList/Names/Name3").adjust_font_to_fit()
 		if state == "NICE":
 			if w.get_child(0).get_node("NiceList") == null:
 				return
@@ -42,21 +43,22 @@ func change_state(new_state):
 	update_list_window()
 	
 func update_status():
-	$StateViewer/CurrentStateLabel.text = state
+	$Vox/StateViewer/CurrentStateLabel.text = state
 	if state == "NAUGHTY":
-		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(173, 00, 00, 255))
+		$Vox/StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(173, 00, 00, 255))
 	elif state == "NICE":
-		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(00, 173, 55, 255)) 
+		$Vox/StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(00, 173, 55, 255)) 
 	else:
-		$StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(255, 255, 255, 255))
+		$Vox/StateViewer/CurrentStateLabel.add_theme_color_override("font_color", Color8(255, 255, 255, 255))
 
 func _open_list_window() -> void:
 	var nw = get_tree().get_root().find_child("list_window", true, false)
 	if nw == null:
 		var w = Window.new()
-		w.size = get_viewport_rect().size
+		w.size = Vector2(1920, 1080) / 2
 		w.visible = true
 		w.name = "list_window"
+		w.set_script(load("res://window_script.gd"))
 		get_tree().root.add_child(w)
 	else:
 		if state == "NAUGHTY" or state == "NICE":
@@ -84,6 +86,8 @@ func open_list():
 		var list_scene = preload("res://test_list.tscn")
 		l = list_scene.instantiate()
 		nw.add_child(l)
+		nw.size_changed.connect(l.on_resized)
+		l.on_resized()
 	if !scroll_open:
 		scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
 		scroll_sprite.play("unroll")
@@ -101,6 +105,8 @@ func load_list(n, l):
 	n.modulate = Color("ffffff00")
 	var marker = l.get_node("CenterMarker")
 	n.position = marker.position
+	n.rotation = marker.rotation
+	#n.scale = Vector2(0.6, 0.6)
 	l.add_child(n)
 	update_lists()
 	var ap = n.find_child("AnimationPlayer", true, false)
@@ -148,10 +154,10 @@ func close_list_window() -> void:
 	update_status()
 
 func update_player() -> void:
-	player_name = $PlayerList/TextEdit.text
-	$PlayerList/TextEdit.text = ""
-	$PlayerList/PlayerName.text = player_name
-	$PlayerList/PlayerName.adjust_font_to_fit()
+	player_name = $Vox/PlayerList/TextEdit.text
+	$Vox/PlayerList/TextEdit.text = ""
+	$Vox/PlayerList/PlayerName.text = player_name
+	$Vox/PlayerList/PlayerName.adjust_font_to_fit()
 	naughty_list.insert(2, player_name)
 	nice_list.insert(2, player_name)
 	update_lists()

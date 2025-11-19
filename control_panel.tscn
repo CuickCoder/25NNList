@@ -20,22 +20,28 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.0
+offset_top = -76.0
 offset_right = 1.0
-offset_bottom = -2.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_f5hji")
 
-[node name="Label" type="Label" parent="."]
+[node name="Vox" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -237.5
-offset_top = 32.0
-offset_right = 237.5
-offset_bottom = 131.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Vox"]
+layout_mode = 2
 theme = ExtResource("3_1x1sv")
 text = "Operation: Santa's List
 Control Panel"
@@ -43,22 +49,69 @@ horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 162
 
-[node name="PlayerList" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -259.0
-offset_top = -35.0
-offset_right = 259.0
-offset_bottom = 205.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ControlButtons" type="Panel" parent="Vox"]
+custom_minimum_size = Vector2(518, 382)
+layout_mode = 2
 theme = ExtResource("3_1x1sv")
 
-[node name="TextEdit" type="LineEdit" parent="PlayerList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Vox/ControlButtons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 22.0
+offset_right = -29.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadNaughty" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+theme_type_variation = &"RedButton"
+text = "Load Naughty List"
+
+[node name="LoadNice" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+text = "Load Nice List"
+
+[node name="PlayAudioHint" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+theme_type_variation = &"RedButton"
+disabled = true
+text = "Play Audio Hint"
+
+[node name="OpenListWindow" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+text = "Open List Window"
+
+[node name="ResetList" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+theme_type_variation = &"RedButton"
+text = "Reset List"
+
+[node name="CloseListWindow" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1x1sv")
+text = "Close List Window"
+
+[node name="PlayerList" type="Panel" parent="Vox"]
+custom_minimum_size = Vector2(518, 240)
+layout_mode = 2
+theme = ExtResource("3_1x1sv")
+
+[node name="TextEdit" type="LineEdit" parent="Vox/PlayerList"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,25 +128,7 @@ theme = ExtResource("3_1x1sv")
 placeholder_text = "Enter Player Name..."
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="PlayerList"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = 51.0
-offset_right = 213.0
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "NOT SELECTED"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_ewo2d")
-
-[node name="Button" type="Button" parent="PlayerList"]
+[node name="Button" type="Button" parent="Vox/PlayerList"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,11 +144,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Add Player"
 
-[node name="Label" type="Label" parent="PlayerList"]
+[node name="Label" type="Label" parent="Vox/PlayerList"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 135.0
-offset_right = 516.0
+offset_right = 651.0
 offset_bottom = 183.0
 theme = ExtResource("3_1x1sv")
 theme_override_font_sizes/font_size = 34
@@ -121,119 +156,66 @@ text = "Current player name is:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ControlButtons" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -259.0
-offset_top = 142.0
-offset_right = 259.0
-offset_bottom = 524.0
-grow_horizontal = 2
-theme = ExtResource("3_1x1sv")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlButtons"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 29.0
-offset_top = 22.0
-offset_right = -29.0
-offset_bottom = -22.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LoadNaughty" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-theme_type_variation = &"RedButton"
-text = "Load Naughty List"
-
-[node name="LoadNice" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-text = "Load Nice List"
-
-[node name="PlayAudioHint" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-theme_type_variation = &"RedButton"
-disabled = true
-text = "Play Audio Hint"
-
-[node name="OpenListWindow" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-text = "Open List Window"
-
-[node name="ResetList" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-theme_type_variation = &"RedButton"
-text = "Reset List"
-
-[node name="CloseListWindow" type="Button" parent="ControlButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("3_1x1sv")
-text = "Close List Window"
-
-[node name="StateViewer" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -259.0
-offset_top = 801.0
-offset_right = 259.0
-offset_bottom = 948.0
-grow_horizontal = 2
-theme = ExtResource("3_1x1sv")
-
-[node name="Top" type="Label" parent="StateViewer"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -106.0
-offset_top = 13.0
-offset_right = 106.0
-offset_bottom = 63.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 34
-text = "Current State:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CurrentStateLabel" type="Label" parent="StateViewer"]
+[node name="PlayerName" type="Label" parent="Vox/PlayerList"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -7.5
-offset_right = 150.0
-offset_bottom = 55.5
+offset_left = -324.0
+offset_top = 51.0
+offset_right = 324.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "NOT SELECTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_ewo2d")
+
+[node name="StateViewer" type="Panel" parent="Vox"]
+custom_minimum_size = Vector2(518, 147)
+layout_mode = 2
+theme = ExtResource("3_1x1sv")
+
+[node name="Top" type="Label" parent="Vox/StateViewer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.0
+offset_top = 16.0
+offset_right = 324.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 34
+text = "Current State:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentStateLabel" type="Label" parent="Vox/StateViewer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -87.0
+offset_right = 324.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "NONE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="gui_input" from="PlayerList/TextEdit" to="." method="_on_text_edit_gui_input"]
-[connection signal="resized" from="PlayerList/PlayerName" to="PlayerList/PlayerName" method="_on_resized"]
-[connection signal="pressed" from="PlayerList/Button" to="." method="update_player"]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/ResetList" to="." method="reset_list"]
-[connection signal="pressed" from="ControlButtons/VBoxContainer/CloseListWindow" to="." method="close_list_window"]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/ResetList" to="." method="reset_list"]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/CloseListWindow" to="." method="close_list_window"]
+[connection signal="gui_input" from="Vox/PlayerList/TextEdit" to="." method="_on_text_edit_gui_input"]
+[connection signal="pressed" from="Vox/PlayerList/Button" to="." method="update_player"]
+[connection signal="resized" from="Vox/PlayerList/PlayerName" to="Vox/PlayerList/PlayerName" method="_on_resized"]

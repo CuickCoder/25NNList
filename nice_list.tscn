@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cujl1apqm7nkg"]
+[gd_scene load_steps=14 format=3 uid="uid://cujl1apqm7nkg"]
 
 [ext_resource type="Script" uid="uid://cflq1cf18t0cy" path="res://list_script.gd" id="1_jmjmp"]
 [ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="2_fao6l"]
 [ext_resource type="Texture2D" uid="uid://1mpk04syaer5" path="res://assets/drummer drumming.png" id="3_kp2kh"]
 [ext_resource type="Texture2D" uid="uid://buqhn6aln8r13" path="res://assets/FIVE GOLDEN RIIIIIIIINGS.png" id="4_orc12"]
+[ext_resource type="Script" uid="uid://iw0xtb6o2iuq" path="res://player_name.gd" id="5_5ko5n"]
 [ext_resource type="Texture2D" uid="uid://cke6xrbap1mfw" path="res://assets/Swan a swimming.png" id="5_s4t6m"]
 [ext_resource type="Texture2D" uid="uid://c1sxxuvv0wdjr" path="res://assets/lord a leaping.png" id="6_1qbg8"]
 
@@ -120,92 +121,83 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 21.0
+offset_left = -57.0
 offset_top = 32.0
 offset_right = -21.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_jmjmp")
 
 [node name="Names" type="VBoxContainer" parent="."]
-clip_children = 2
-clip_contents = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = -537.5
-offset_right = 274.0
-offset_bottom = 537.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_fao6l")
 theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="Names"]
-layout_mode = 2
-theme = ExtResource("2_fao6l")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-text = "Nice List"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Name1" type="Label" parent="Names"]
+custom_minimum_size = Vector2(665, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "NAME MCNAMEFACE
-NAUGHTY"
+theme_override_font_sizes/font_size = 42
+text = "NAME MCNAMEFACE: NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Symbol1" type="Control" parent="Names"]
-clip_contents = true
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="Symbol1" type="TextureRect" parent="Names/Symbol1"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.49231
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_kp2kh")
-expand_mode = 5
-
-[node name="Name2" type="Label" parent="Names"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "NAME MCNAMEFACE
-NAUGHTY"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Symbol2" type="Control" parent="Names"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-
-[node name="Symbol2" type="TextureRect" parent="Names/Symbol2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.246155
-offset_right = 64.0
-offset_bottom = 64.246155
+offset_left = -100.0
+offset_top = -100.19194
+offset_right = 100.0
+offset_bottom = 100.19194
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("3_kp2kh")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Name2" type="Label" parent="Names"]
+custom_minimum_size = Vector2(665, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 42
+text = "NAME MCNAMEFACE: NAUGHTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Symbol2" type="Control" parent="Names"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+
+[node name="Symbol2" type="TextureRect" parent="Names/Symbol2"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.19194
+offset_right = 100.0
+offset_bottom = 100.19194
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -214,17 +206,18 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="Name3" type="Label" parent="Names"]
+custom_minimum_size = Vector2(665, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "NAME MCNAMEFACE
-NAUGHTY"
+theme_override_font_sizes/font_size = 42
+text = "NAME MCNAMEFACE: NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_5ko5n")
 
 [node name="Symbol3" type="Control" parent="Names"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="Symbol3" type="TextureRect" parent="Names/Symbol3"]
@@ -234,10 +227,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.12284
-offset_right = 64.0
-offset_bottom = 64.12284
+offset_left = -100.0
+offset_top = -100.288185
+offset_right = 100.0
+offset_bottom = 100.288185
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -246,17 +239,17 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="Name4" type="Label" parent="Names"]
+custom_minimum_size = Vector2(665, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "NAME MCNAMEFACE
-NAUGHTY"
+theme_override_font_sizes/font_size = 38
+text = "NAME MCNAMEFACE: NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Symbol4" type="Control" parent="Names"]
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="Symbol4" type="TextureRect" parent="Names/Symbol4"]
@@ -266,10 +259,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.12284
-offset_right = 64.0
-offset_bottom = 64.12284
+offset_left = -100.0
+offset_top = -100.09596
+offset_right = 100.0
+offset_bottom = 100.09596
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -278,12 +271,12 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="Name5" type="Label" parent="Names"]
+custom_minimum_size = Vector2(665, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "NAME MCNAMEFACE
-NAUGHTY"
+theme_override_font_sizes/font_size = 42
+text = "NAME MCNAMEFACE: NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,17 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5rahgj1w3886"]
+[gd_scene load_steps=3 format=3 uid="uid://c5rahgj1w3886"]
 
+[ext_resource type="Script" uid="uid://5e384yfnt8ee" path="res://test_list.gd" id="1_hbgwo"]
 [ext_resource type="PackedScene" uid="uid://dtaeqbflutski" path="res://test_scroll.tscn" id="1_redjk"]
 
 [node name="ScrollWrapper" type="Node2D"]
+script = ExtResource("1_hbgwo")
 
 [node name="ScrollContainer" type="Node2D" parent="."]
-position = Vector2(648, 0)
-rotation = 1.5707964
+position = Vector2(1920, 1080)
 
 [node name="ScrollSprite" parent="ScrollContainer" instance=ExtResource("1_redjk")]
-position = Vector2(554, 318.0001)
 rotation = 0.0
-scale = Vector2(0.54696953, 0.54696953)
+scale = Vector2(2, 2)
 
 [node name="CenterMarker" type="Node2D" parent="."]
-position = Vector2(328, 530)
+position = Vector2(1920, 1064)
+rotation = 1.5707964
