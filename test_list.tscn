@@ -1,18 +1,136 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5rahgj1w3886"]
+[gd_scene load_steps=37 format=3 uid="uid://c5rahgj1w3886"]
 
 [ext_resource type="Script" uid="uid://5e384yfnt8ee" path="res://test_list.gd" id="1_hbgwo"]
 [ext_resource type="PackedScene" uid="uid://dtaeqbflutski" path="res://test_scroll.tscn" id="1_redjk"]
+[ext_resource type="Texture2D" uid="uid://ds5asefskcb4u" path="res://No squashingframes/no_squash_and_stretch0000.png" id="3_8kjn6"]
+[ext_resource type="Texture2D" uid="uid://dctlub07jaen1" path="res://No squashingframes/no_squash_and_stretch0001.png" id="3_bu2w7"]
+[ext_resource type="Texture2D" uid="uid://cuxx3emw4iq6q" path="res://No squashingframes/no_squash_and_stretch0002.png" id="4_e251k"]
+[ext_resource type="Texture2D" uid="uid://rspf5lsqwtat" path="res://No squashingframes/no_squash_and_stretch0003.png" id="5_ay6f4"]
+[ext_resource type="Texture2D" uid="uid://b3dclwsm3tfsd" path="res://No squashingframes/no_squash_and_stretch0004.png" id="6_4v5da"]
+[ext_resource type="Texture2D" uid="uid://db4mxbhtpp4ot" path="res://No squashingframes/no_squash_and_stretch0005.png" id="7_0ha1p"]
+[ext_resource type="Texture2D" uid="uid://blnijbaf0prg6" path="res://No squashingframes/no_squash_and_stretch0006.png" id="8_re5a1"]
+[ext_resource type="Texture2D" uid="uid://jsx70j41ibah" path="res://No squashingframes/no_squash_and_stretch0007.png" id="9_uys86"]
+[ext_resource type="Texture2D" uid="uid://b5wwrs5uxt8hw" path="res://No squashingframes/no_squash_and_stretch0008.png" id="10_u71l5"]
+[ext_resource type="Texture2D" uid="uid://cwgmavltg1j3f" path="res://No squashingframes/no_squash_and_stretch0009.png" id="11_jq0mm"]
+[ext_resource type="Texture2D" uid="uid://mlyklkhutu74" path="res://No squashingframes/no_squash_and_stretch0010.png" id="12_bifw7"]
+[ext_resource type="Texture2D" uid="uid://uumjd54clqoa" path="res://No squashingframes/no_squash_and_stretch0011.png" id="13_w4bri"]
+[ext_resource type="Texture2D" uid="uid://d1ukrrf2n7l3b" path="res://No squashingframes/no_squash_and_stretch0012.png" id="14_ffkli"]
+[ext_resource type="Texture2D" uid="uid://vcishl4filtc" path="res://No squashingframes/no_squash_and_stretch0013.png" id="15_10uqq"]
+[ext_resource type="Texture2D" uid="uid://dnjtsfn8th15m" path="res://No squashingframes/no_squash_and_stretch0014.png" id="16_m5n2k"]
+[ext_resource type="Texture2D" uid="uid://chmm6e3awpaa3" path="res://No squashingframes/no_squash_and_stretch0015.png" id="17_mu8vf"]
+[ext_resource type="Texture2D" uid="uid://d1gs45po51ahl" path="res://No squashingframes/no_squash_and_stretch0016.png" id="18_6mdr0"]
+[ext_resource type="Texture2D" uid="uid://bprxya8rxjtb3" path="res://No squashingframes/no_squash_and_stretch0017.png" id="19_xvpl8"]
+[ext_resource type="Texture2D" uid="uid://b3ktyfv6eqb5s" path="res://No squashingframes/no_squash_and_stretch0018.png" id="20_0tdlg"]
+[ext_resource type="Texture2D" uid="uid://b2m6rric5m280" path="res://No squashingframes/no_squash_and_stretch0019.png" id="21_48tsr"]
+[ext_resource type="Texture2D" uid="uid://dy7xxsvf1hst7" path="res://No squashingframes/no_squash_and_stretch0020.png" id="22_lm0t6"]
+[ext_resource type="Texture2D" uid="uid://drkqj004qtrem" path="res://No squashingframes/no_squash_and_stretch0021.png" id="23_nrg4b"]
+[ext_resource type="Texture2D" uid="uid://bhj2mxt5nm0kn" path="res://No squashingframes/no_squash_and_stretch0022.png" id="24_clys0"]
+[ext_resource type="Texture2D" uid="uid://cagil6gc8ebtf" path="res://No squashingframes/no_squash_and_stretch0023.png" id="25_iv0vh"]
+[ext_resource type="Texture2D" uid="uid://dmp0r8hhfb343" path="res://No squashingframes/no_squash_and_stretch0024.png" id="26_hqkfj"]
+[ext_resource type="Texture2D" uid="uid://dlkk78mlp3dop" path="res://No squashingframes/no_squash_and_stretch0025.png" id="27_16o8c"]
+[ext_resource type="Texture2D" uid="uid://bd0md1f6dbxmd" path="res://No squashingframes/no_squash_and_stretch0026.png" id="28_84os0"]
+[ext_resource type="Texture2D" uid="uid://bm3p68bd8m41t" path="res://No squashingframes/no_squash_and_stretch0027.png" id="29_qdb7d"]
+[ext_resource type="Texture2D" uid="uid://8capqm4tyv6i" path="res://No squashingframes/no_squash_and_stretch0028.png" id="30_hr2qi"]
+[ext_resource type="Texture2D" uid="uid://dy1shds58pkgo" path="res://No squashingframes/no_squash_and_stretch0029.png" id="31_6pxdm"]
+[ext_resource type="Texture2D" uid="uid://bnaf332pp2xf" path="res://No squashingframes/no_squash_and_stretch0030.png" id="32_5yion"]
 
-[node name="ScrollWrapper" type="Node2D"]
+[sub_resource type="Animation" id="Animation_hbgwo"]
+resource_name = "unroll"
+length = 1.2916709
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollMask:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12628789, 0.21233019, 0.24889696, 0.29235592, 0.33333334, 0.3742898, 0.41739872, 0.45857015, 0.50022596, 0.54230404, 0.5839599, 0.62561566, 0.6668943, 0.7085501, 0.7506903, 0.7923461, 0.83351755, 0.87517333, 0.91682917, 0.9603431, 1.0019765, 1.0422809, 1.0824677, 1.1254888, 1.2916709),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(222, 1181), Vector2(180, 1181), Vector2(102, 1181), Vector2(99, 1181.3854), Vector2(185, 1181.458), Vector2(467, 1181.5265), Vector2(870, 1181.5895), Vector2(1348, 1181.6558), Vector2(1854, 1181.7191), Vector2(2335, 1181.7832), Vector2(2739, 1181.8479), Vector2(3121, 1181.912), Vector2(3130, 1181.9761), Vector2(3064, 1182.0396), Vector2(2912, 1182.1036), Vector2(2704, 1182.1685), Vector2(2471, 1182.2325), Vector2(2257, 1182.2958), Vector2(2090, 1182.3599), Vector2(2036, 1182.4238), Vector2(2086, 1182.4238), Vector2(2209, 1182.4238), Vector2(2460, 1182.6167), Vector2(2351, 1182.6167), Vector2(2511, 1182.6167), Vector2(2499, 1183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrollSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336, 0.125, 0.16666667, 0.20833333, 0.25, 0.29166666, 0.33333334, 0.375, 0.41666666, 0.45833334, 0.5, 0.5416667, 0.5833333, 0.625, 0.6666667, 0.7083333, 0.75, 0.7916667, 0.8333333, 0.875, 0.9166667, 0.9583333, 1, 1.0416666, 1.0833334, 1.125, 1.1666666, 1.2083334, 1.25, 1.2916666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_8kjn6"), ExtResource("3_bu2w7"), ExtResource("4_e251k"), ExtResource("5_ay6f4"), ExtResource("6_4v5da"), ExtResource("7_0ha1p"), ExtResource("8_re5a1"), ExtResource("9_uys86"), ExtResource("10_u71l5"), ExtResource("11_jq0mm"), ExtResource("12_bifw7"), ExtResource("13_w4bri"), ExtResource("14_ffkli"), ExtResource("15_10uqq"), ExtResource("16_m5n2k"), ExtResource("17_mu8vf"), ExtResource("18_6mdr0"), ExtResource("19_xvpl8"), ExtResource("20_0tdlg"), ExtResource("21_48tsr"), ExtResource("22_lm0t6"), ExtResource("23_nrg4b"), ExtResource("24_clys0"), ExtResource("25_iv0vh"), ExtResource("26_hqkfj"), ExtResource("27_16o8c"), ExtResource("28_84os0"), ExtResource("29_qdb7d"), ExtResource("30_hr2qi"), ExtResource("31_6pxdm"), ExtResource("32_5yion"), ExtResource("32_5yion")]
+}
+
+[sub_resource type="Animation" id="Animation_8kjn6"]
+length = 0.001
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollMask:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2509, 1181)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrollSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8kjn6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1i56o"]
+_data = {
+&"RESET": SubResource("Animation_8kjn6"),
+&"unroll": SubResource("Animation_hbgwo")
+}
+
+[node name="ScrollWrapper" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_hbgwo")
 
-[node name="ScrollContainer" type="Node2D" parent="."]
-position = Vector2(1920, 1080)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1i56o")
+}
 
-[node name="ScrollSprite" parent="ScrollContainer" instance=ExtResource("1_redjk")]
+[node name="ScrollSprite" parent="." instance=ExtResource("1_redjk")]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
 rotation = 0.0
 scale = Vector2(2, 2)
+texture = ExtResource("3_8kjn6")
+expand_mode = 3
 
-[node name="CenterMarker" type="Node2D" parent="."]
-position = Vector2(1920, 1064)
-rotation = 1.5707964
+[node name="ScrollMask" type="Control" parent="."]
+top_level = true
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1863.0
+offset_top = 505.0
+offset_right = 4372.0
+offset_bottom = 1686.0
+pivot_offset = Vector2(-8, -16)
+
+[node name="Panel" type="Panel" parent="ScrollMask"]
+layout_mode = 1
+offset_right = 3840.0
+offset_bottom = 2490.0
+
+[editable path="ScrollSprite"]

@@ -1,15 +1,15 @@
-extends Node2D
+extends Control
 
 var design_size := Vector2(3840, 2160)
 
+func _ready() -> void:
+	$ScrollMask.position = $ScrollSprite/CenterMarker.position
+
 func on_resized():
-	pass
-	var new_size = get_viewport_rect().size
+	var new_size := get_viewport_rect().size
 	var scale_x = new_size.x / design_size.x
 	var scale_y = new_size.y / design_size.y
 	
 	var uniform_scale = min(scale_x, scale_y)
 	scale = Vector2(uniform_scale, uniform_scale)
-	print("VP: ", get_viewport_rect().size)
-	print("Container scale: ", global_scale)
-	print("Sprite global scale: ", $ScrollContainer/ScrollSprite.global_scale)
+	$ScrollMask.scale = Vector2(uniform_scale, uniform_scale)

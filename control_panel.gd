@@ -68,15 +68,19 @@ func open_list():
 	if nw == null:
 		return
 	var l
+	var ls
+	var lc
 	var scroll_sprite
 	if nw.get_child_count() > 0:
 		l = nw.get_node("ScrollWrapper")
+		ls = l.get_node("ScrollSpriteWrapper")
+		lc = l.get_node("ScrollMaskWrapper").get_node("ScrollMask")
 		for child_name in ["NaughtyList", "NiceList"]:
-			if l.has_node(child_name):
-				var child = l.get_node(child_name)
+			if lc.has_node(child_name):
+				var child = lc.get_node(child_name)
 				await unload_list(child)
 		if scroll_open:
-			scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
+			scroll_sprite = l.get_node("AnimationPlayer")
 			scroll_sprite.play_backwards("unroll")
 			await scroll_sprite.animation_finished
 			scroll_open = false
@@ -84,36 +88,38 @@ func open_list():
 		var list_scene = preload("res://test_list.tscn")
 		l = list_scene.instantiate()
 		nw.add_child(l)
+		ls = l.get_node("ScrollSpriteWrapper")
 		nw.size_changed.connect(l.on_resized)
 		l.on_resized()
 	if !scroll_open and state != "NONE":
-		scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
-		scroll_sprite.play("unroll")
-		await scroll_sprite.animation_finished
-		scroll_open = true
-	elif !scroll_open:
-		scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
-		scroll_sprite.play("unroll", 0.0)
-	if state == "NAUGHTY" or state == "NICE":
 		if state == "NICE":
 			var n = nice_list_scene.instantiate()
 			load_list(n, l)
 		if state == "NAUGHTY":
 			var n = naughty_list_scene.instantiate()
 			load_list(n, l)
+		scroll_sprite = l.get_node("AnimationPlayer")
+		scroll_sprite.play("unroll")
+		await scroll_sprite.animation_finished
+		scroll_open = true
+	elif !scroll_open and state == "NONE":
+		scroll_sprite = l.get_node("AnimationPlayer")
+		scroll_sprite.play("unroll", 0.0)
+		#scroll_sprite.frame = 0
+	#if state == "NAUGHTY" or state == "NICE":
+		
 		
 func load_list(n, l):
-	n.modulate = Color("ffffff00")
-	var marker = l.get_node("CenterMarker")
+	var c = l.get_node("ScrollMaskWrapper").get_node("ScrollMask")
+	var marker = c.get_node("CenterMarker")
 	n.position = marker.position
 	n.rotation = marker.rotation
-	l.add_child(n)
+	c.add_child(n)
 	update_lists()
 	var ap = n.find_child("AnimationPlayer", true, false)
-	ap.play("fade_in")
-	await ap.animation_finished
-	ap.play("fade_in_player_name")
-	await ap.animation_finished
+	if state == "NICE":
+		ap.play("fade_in_player_name")
+		await ap.animation_finished
 	
 func unload_list(n):
 	var ap = n.find_child("AnimationPlayer", true, false)
@@ -139,10 +145,8 @@ func reset_list():
 			if l.has_node(child_name):
 				var child = l.get_node(child_name)
 				await unload_list(child)
-			else:
-				return
 		if scroll_open:
-			var scroll_sprite = l.get_node("ScrollContainer").get_node("ScrollSprite")
+			var scroll_sprite = l.get_node("AnimationPlayer")
 			scroll_sprite.play_backwards("unroll")
 			await scroll_sprite.animation_finished
 			scroll_open = false

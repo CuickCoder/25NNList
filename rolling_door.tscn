@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnxorqle5ckdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uvpu"]
+bg_color = Color(0.18000486, 0.1800049, 0.18000478, 1)
+
+[node name="RollingDoor" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uvpu")
