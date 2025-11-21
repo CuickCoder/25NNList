@@ -14,7 +14,7 @@ var nice_list_scene = preload("res://nice_list.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func update_lists():
 	naughty_list = default_naughty_list.duplicate(true)
@@ -28,14 +28,15 @@ func update_lists():
 		return
 	else:
 		if state == "NAUGHTY":
-			if w.get_child(0).get_node("NaughtyList") == null:
+			if w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList") == null:
 				return
-			w.get_child(0).find_child("NaughtyList", true, false).add_list_names(naughty_list, state)
-			w.get_child(0).get_node("NaughtyList/Names/Name3").adjust_font_to_fit()
+			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList").add_list_names(naughty_list, state)
+			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList/Names/Name3").adjust_font_to_fit()
 		if state == "NICE":
-			if w.get_child(0).get_node("NiceList") == null:
+			if w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList") == null:
 				return
-			w.get_child(0).find_child("NiceList", true, false).add_list_names(nice_list, state)
+			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList").add_list_names(nice_list, state)
+			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList/Names/Name3").adjust_font_to_fit()
 	
 func change_state(new_state):
 	state = new_state
@@ -68,30 +69,33 @@ func open_list():
 	if nw == null:
 		return
 	var l
-	var ls
-	var lc
+	var scrollmask
 	var scroll_sprite
 	if nw.get_child_count() > 0:
 		l = nw.get_node("ScrollWrapper")
-		ls = l.get_node("ScrollSpriteWrapper")
-		lc = l.get_node("ScrollMaskWrapper").get_node("ScrollMask")
+		scrollmask = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
 		for child_name in ["NaughtyList", "NiceList"]:
-			if lc.has_node(child_name):
-				var child = lc.get_node(child_name)
+			if scrollmask.has_node(child_name):
+				var child = scrollmask.get_node(child_name)
 				await unload_list(child)
 		if scroll_open:
 			scroll_sprite = l.get_node("AnimationPlayer")
 			scroll_sprite.play_backwards("unroll")
 			await scroll_sprite.animation_finished
 			scroll_open = false
+			for child_name in ["NaughtyList", "NiceList"]:
+				if scrollmask.has_node(child_name):
+					var child = scrollmask.get_node(child_name)
+					child.queue_free()
+				
 	else:
 		var list_scene = preload("res://test_list.tscn")
 		l = list_scene.instantiate()
 		nw.add_child(l)
-		ls = l.get_node("ScrollSpriteWrapper")
 		nw.size_changed.connect(l.on_resized)
 		l.on_resized()
 	if !scroll_open and state != "NONE":
+		scrollmask = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
 		if state == "NICE":
 			var n = nice_list_scene.instantiate()
 			load_list(n, l)
@@ -104,19 +108,24 @@ func open_list():
 		scroll_open = true
 	elif !scroll_open and state == "NONE":
 		scroll_sprite = l.get_node("AnimationPlayer")
-		scroll_sprite.play("unroll", 0.0)
-		#scroll_sprite.frame = 0
-	#if state == "NAUGHTY" or state == "NICE":
-		
+		scroll_sprite.play("unroll", -1.0, 0.0, false)
 		
 func load_list(n, l):
-	var c = l.get_node("ScrollMaskWrapper").get_node("ScrollMask")
-	var marker = c.get_node("CenterMarker")
-	n.position = marker.position
-	n.rotation = marker.rotation
-	c.add_child(n)
+	var panel = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
+	var c = panel.get_node("CenterMarker")
+	var anim = l.get_node("AnimationPlayer")
+	anim.play("unroll")
+	n.position = c.position
+	n.rotation = c.rotation
+	panel.add_child(n)
+	n.scale = Vector2(1.0, 1.0)
+	n.size = Vector2(100, 100)
 	update_lists()
 	var ap = n.find_child("AnimationPlayer", true, false)
+	if state == "NICE":
+		var this_player_name = panel.get_node("NiceList/Names/Name3")
+		this_player_name.self_modulate = Color("ffffff00")
+	await anim.animation_finished
 	if state == "NICE":
 		ap.play("fade_in_player_name")
 		await ap.animation_finished
@@ -125,9 +134,6 @@ func unload_list(n):
 	var ap = n.find_child("AnimationPlayer", true, false)
 	ap.play("fade_out_player_name")
 	await ap.animation_finished
-	ap.play("fade_out")
-	await ap.animation_finished
-	n.queue_free()
 	
 func update_list_window():
 	var w = get_tree().get_root().find_child("list_window", true, false)
@@ -141,15 +147,17 @@ func reset_list():
 		return
 	if w.get_child_count() > 0:
 		var l = w.get_node("ScrollWrapper")
+		var p = w.get_node("ScrollWrapper").get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
 		for child_name in ["NaughtyList", "NiceList"]:
-			if l.has_node(child_name):
-				var child = l.get_node(child_name)
+			if p.has_node(child_name):
+				var child = p.get_node(child_name)
 				await unload_list(child)
-		if scroll_open:
-			var scroll_sprite = l.get_node("AnimationPlayer")
-			scroll_sprite.play_backwards("unroll")
-			await scroll_sprite.animation_finished
-			scroll_open = false
+				if scroll_open:
+					var scroll_sprite = l.get_node("AnimationPlayer")
+					scroll_sprite.play_backwards("unroll")
+					await scroll_sprite.animation_finished
+					scroll_open = false
+				child.queue_free()
 			
 func close_list_window() -> void:
 	var w = get_tree().get_root().find_child("list_window", true, false)
