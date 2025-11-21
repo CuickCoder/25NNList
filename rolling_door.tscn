@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnxorqle5ckdg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uvpu"]
-bg_color = Color(0.18000486, 0.1800049, 0.18000478, 1)
+[ext_resource type="Texture2D" uid="uid://dwjafm714jjra" path="res://assets/list vault garage door.png" id="1_u52ns"]
 
-[node name="RollingDoor" type="Panel"]
+[node name="RollingDoor" type="TextureRect"]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0uvpu")
+texture = ExtResource("1_u52ns")

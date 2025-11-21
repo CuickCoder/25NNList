@@ -2,6 +2,9 @@ extends Control
 
 var design_size := Vector2(3840, 2160)
 
+func _ready() -> void:
+	$RollingDoor.position = Vector2.ZERO
+
 func on_resized():
 	var new_size := get_viewport_rect().size
 	var scale_x = new_size.x / design_size.x

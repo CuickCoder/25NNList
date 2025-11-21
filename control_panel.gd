@@ -8,6 +8,7 @@ var nice_list: Array = ["Tafan Hong", "Percie Carrillo", "Teana Campbell", "Viol
 var state: String = "NONE"
 
 var scroll_open: bool = false
+var vault_open: bool = false
 
 var naughty_list_scene = preload("res://naughty_list.tscn")
 var nice_list_scene = preload("res://nice_list.tscn")
@@ -28,15 +29,15 @@ func update_lists():
 		return
 	else:
 		if state == "NAUGHTY":
-			if w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList") == null:
+			if w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NaughtyList") == null:
 				return
-			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList").add_list_names(naughty_list, state)
-			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NaughtyList/Names/Name3").adjust_font_to_fit()
+			w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NaughtyList").add_list_names(naughty_list, state)
+			w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NaughtyList/Names/Name3").adjust_font_to_fit()
 		if state == "NICE":
-			if w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList") == null:
+			if w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NiceList") == null:
 				return
-			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList").add_list_names(nice_list, state)
-			w.get_child(0).get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel").get_node("NiceList/Names/Name3").adjust_font_to_fit()
+			w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NiceList").add_list_names(nice_list, state)
+			w.get_child(0).get_node("ScrollSprite/ScrollMask/Panel/NiceList/Names/Name3").adjust_font_to_fit()
 	
 func change_state(new_state):
 	state = new_state
@@ -71,6 +72,7 @@ func open_list():
 	var l
 	var scrollmask
 	var scroll_sprite
+	var asp
 	if nw.get_child_count() > 0:
 		l = nw.get_node("ScrollWrapper")
 		scrollmask = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
@@ -79,8 +81,10 @@ func open_list():
 				var child = scrollmask.get_node(child_name)
 				await unload_list(child)
 		if scroll_open:
+			asp = l.get_node("AudioStreamPlayer")
 			scroll_sprite = l.get_node("AnimationPlayer")
 			scroll_sprite.play_backwards("unroll")
+			asp.play_track(3)
 			await scroll_sprite.animation_finished
 			scroll_open = false
 			for child_name in ["NaughtyList", "NiceList"]:
@@ -95,6 +99,7 @@ func open_list():
 		nw.size_changed.connect(l.on_resized)
 		l.on_resized()
 	if !scroll_open and state != "NONE":
+		asp = l.get_node("AudioStreamPlayer")
 		scrollmask = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
 		if state == "NICE":
 			var n = nice_list_scene.instantiate()
@@ -104,6 +109,7 @@ func open_list():
 			load_list(n, l)
 		scroll_sprite = l.get_node("AnimationPlayer")
 		scroll_sprite.play("unroll")
+		asp.play_track(3)
 		await scroll_sprite.animation_finished
 		scroll_open = true
 	elif !scroll_open and state == "NONE":
@@ -114,7 +120,9 @@ func load_list(n, l):
 	var panel = l.get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
 	var c = panel.get_node("CenterMarker")
 	var anim = l.get_node("AnimationPlayer")
+	var asp = l.get_node("AudioStreamPlayer")
 	anim.play("unroll")
+	asp.play_track(3)
 	n.position = c.position
 	n.rotation = c.rotation
 	panel.add_child(n)
@@ -128,11 +136,17 @@ func load_list(n, l):
 	await anim.animation_finished
 	if state == "NICE":
 		ap.play("fade_in_player_name")
+		asp.play_track(2)
 		await ap.animation_finished
 	
 func unload_list(n):
+	var w = get_tree().get_root().find_child("list_window", true, false)
+	if w == null:
+		return
+	var asp = w.get_node("ScrollWrapper/AudioStreamPlayer")
 	var ap = n.find_child("AnimationPlayer", true, false)
 	ap.play("fade_out_player_name")
+	asp.play_track(2)
 	await ap.animation_finished
 	
 func update_list_window():
@@ -147,14 +161,16 @@ func reset_list():
 		return
 	if w.get_child_count() > 0:
 		var l = w.get_node("ScrollWrapper")
-		var p = w.get_node("ScrollWrapper").get_node("ScrollSprite").get_node("ScrollMask").get_node("Panel")
+		var p = w.get_node("ScrollWrapper/ScrollSprite/ScrollMask/Panel")
 		for child_name in ["NaughtyList", "NiceList"]:
 			if p.has_node(child_name):
 				var child = p.get_node(child_name)
 				await unload_list(child)
 				if scroll_open:
 					var scroll_sprite = l.get_node("AnimationPlayer")
+					var asp = l.get_node("AudioStreamPlayer")
 					scroll_sprite.play_backwards("unroll")
+					asp.play_track(3)
 					await scroll_sprite.animation_finished
 					scroll_open = false
 				child.queue_free()
@@ -182,3 +198,24 @@ func _on_text_edit_gui_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			update_player()
 		
+
+func _toggle_vault_door() -> void:
+	var w = get_tree().get_root().find_child("list_window", true, false)
+	if w == null:
+		return
+	var ap = w.get_node("ScrollWrapper/AnimationPlayer")
+	var asp = w.get_node("ScrollWrapper/AudioStreamPlayer")
+	if !vault_open:
+		ap.play("vault door")
+		asp.play_track(0)
+		$Vox/ControlButtons/VBoxContainer/LoadNaughty.disabled = true
+		$Vox/ControlButtons/VBoxContainer/LoadNice.disabled = true
+		await ap.animation_finished
+		vault_open = true
+		$Vox/ControlButtons/VBoxContainer/LoadNaughty.disabled = false
+		$Vox/ControlButtons/VBoxContainer/LoadNice.disabled = false
+	else:
+		ap.play("vault door", -1.0, -1.0, true)
+		asp.play_track(0)
+		await ap.animation_finished
+		vault_open = false

@@ -1,38 +1,120 @@
-[gd_scene load_steps=38 format=3 uid="uid://c5rahgj1w3886"]
+[gd_scene load_steps=45 format=3 uid="uid://c5rahgj1w3886"]
 
 [ext_resource type="Script" uid="uid://5e384yfnt8ee" path="res://test_list.gd" id="1_hbgwo"]
 [ext_resource type="PackedScene" uid="uid://dtaeqbflutski" path="res://test_scroll.tscn" id="1_redjk"]
-[ext_resource type="Texture2D" uid="uid://ds5asefskcb4u" path="res://No squashingframes/no_squash_and_stretch0000.png" id="3_8kjn6"]
-[ext_resource type="Texture2D" uid="uid://dctlub07jaen1" path="res://No squashingframes/no_squash_and_stretch0001.png" id="3_bu2w7"]
-[ext_resource type="Texture2D" uid="uid://cuxx3emw4iq6q" path="res://No squashingframes/no_squash_and_stretch0002.png" id="4_e251k"]
-[ext_resource type="Texture2D" uid="uid://rspf5lsqwtat" path="res://No squashingframes/no_squash_and_stretch0003.png" id="5_ay6f4"]
-[ext_resource type="Texture2D" uid="uid://b3dclwsm3tfsd" path="res://No squashingframes/no_squash_and_stretch0004.png" id="6_4v5da"]
-[ext_resource type="Texture2D" uid="uid://db4mxbhtpp4ot" path="res://No squashingframes/no_squash_and_stretch0005.png" id="7_0ha1p"]
-[ext_resource type="Texture2D" uid="uid://blnijbaf0prg6" path="res://No squashingframes/no_squash_and_stretch0006.png" id="8_re5a1"]
-[ext_resource type="Texture2D" uid="uid://jsx70j41ibah" path="res://No squashingframes/no_squash_and_stretch0007.png" id="9_uys86"]
-[ext_resource type="Texture2D" uid="uid://b5wwrs5uxt8hw" path="res://No squashingframes/no_squash_and_stretch0008.png" id="10_u71l5"]
-[ext_resource type="Texture2D" uid="uid://cwgmavltg1j3f" path="res://No squashingframes/no_squash_and_stretch0009.png" id="11_jq0mm"]
-[ext_resource type="Texture2D" uid="uid://mlyklkhutu74" path="res://No squashingframes/no_squash_and_stretch0010.png" id="12_bifw7"]
-[ext_resource type="Texture2D" uid="uid://uumjd54clqoa" path="res://No squashingframes/no_squash_and_stretch0011.png" id="13_w4bri"]
-[ext_resource type="Texture2D" uid="uid://d1ukrrf2n7l3b" path="res://No squashingframes/no_squash_and_stretch0012.png" id="14_ffkli"]
-[ext_resource type="Texture2D" uid="uid://vcishl4filtc" path="res://No squashingframes/no_squash_and_stretch0013.png" id="15_10uqq"]
-[ext_resource type="Texture2D" uid="uid://dnjtsfn8th15m" path="res://No squashingframes/no_squash_and_stretch0014.png" id="16_m5n2k"]
-[ext_resource type="Texture2D" uid="uid://chmm6e3awpaa3" path="res://No squashingframes/no_squash_and_stretch0015.png" id="17_mu8vf"]
-[ext_resource type="Texture2D" uid="uid://d1gs45po51ahl" path="res://No squashingframes/no_squash_and_stretch0016.png" id="18_6mdr0"]
-[ext_resource type="Texture2D" uid="uid://bprxya8rxjtb3" path="res://No squashingframes/no_squash_and_stretch0017.png" id="19_xvpl8"]
-[ext_resource type="Texture2D" uid="uid://b3ktyfv6eqb5s" path="res://No squashingframes/no_squash_and_stretch0018.png" id="20_0tdlg"]
-[ext_resource type="Texture2D" uid="uid://b2m6rric5m280" path="res://No squashingframes/no_squash_and_stretch0019.png" id="21_48tsr"]
-[ext_resource type="Texture2D" uid="uid://dy7xxsvf1hst7" path="res://No squashingframes/no_squash_and_stretch0020.png" id="22_lm0t6"]
-[ext_resource type="Texture2D" uid="uid://drkqj004qtrem" path="res://No squashingframes/no_squash_and_stretch0021.png" id="23_nrg4b"]
-[ext_resource type="Texture2D" uid="uid://bhj2mxt5nm0kn" path="res://No squashingframes/no_squash_and_stretch0022.png" id="24_clys0"]
-[ext_resource type="Texture2D" uid="uid://cagil6gc8ebtf" path="res://No squashingframes/no_squash_and_stretch0023.png" id="25_iv0vh"]
-[ext_resource type="Texture2D" uid="uid://dmp0r8hhfb343" path="res://No squashingframes/no_squash_and_stretch0024.png" id="26_hqkfj"]
-[ext_resource type="Texture2D" uid="uid://dlkk78mlp3dop" path="res://No squashingframes/no_squash_and_stretch0025.png" id="27_16o8c"]
-[ext_resource type="Texture2D" uid="uid://bd0md1f6dbxmd" path="res://No squashingframes/no_squash_and_stretch0026.png" id="28_84os0"]
-[ext_resource type="Texture2D" uid="uid://bm3p68bd8m41t" path="res://No squashingframes/no_squash_and_stretch0027.png" id="29_qdb7d"]
-[ext_resource type="Texture2D" uid="uid://8capqm4tyv6i" path="res://No squashingframes/no_squash_and_stretch0028.png" id="30_hr2qi"]
-[ext_resource type="Texture2D" uid="uid://dy1shds58pkgo" path="res://No squashingframes/no_squash_and_stretch0029.png" id="31_6pxdm"]
-[ext_resource type="Texture2D" uid="uid://bnaf332pp2xf" path="res://No squashingframes/no_squash_and_stretch0030.png" id="32_5yion"]
+[ext_resource type="Texture2D" uid="uid://ds5asefskcb4u" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0000.png" id="3_8kjn6"]
+[ext_resource type="Texture2D" uid="uid://dctlub07jaen1" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0001.png" id="3_bu2w7"]
+[ext_resource type="Texture2D" uid="uid://cuxx3emw4iq6q" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0002.png" id="4_e251k"]
+[ext_resource type="Texture2D" uid="uid://rspf5lsqwtat" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0003.png" id="5_ay6f4"]
+[ext_resource type="Texture2D" uid="uid://b3dclwsm3tfsd" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0004.png" id="6_4v5da"]
+[ext_resource type="Texture2D" uid="uid://db4mxbhtpp4ot" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0005.png" id="7_0ha1p"]
+[ext_resource type="Texture2D" uid="uid://blnijbaf0prg6" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0006.png" id="8_re5a1"]
+[ext_resource type="Texture2D" uid="uid://jsx70j41ibah" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0007.png" id="9_uys86"]
+[ext_resource type="Texture2D" uid="uid://b5wwrs5uxt8hw" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0008.png" id="10_u71l5"]
+[ext_resource type="Texture2D" uid="uid://cwgmavltg1j3f" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0009.png" id="11_jq0mm"]
+[ext_resource type="Texture2D" uid="uid://mlyklkhutu74" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0010.png" id="12_bifw7"]
+[ext_resource type="Texture2D" uid="uid://uumjd54clqoa" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0011.png" id="13_w4bri"]
+[ext_resource type="Texture2D" uid="uid://d1ukrrf2n7l3b" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0012.png" id="14_ffkli"]
+[ext_resource type="Texture2D" uid="uid://vcishl4filtc" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0013.png" id="15_10uqq"]
+[ext_resource type="Texture2D" uid="uid://dnjtsfn8th15m" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0014.png" id="16_m5n2k"]
+[ext_resource type="Texture2D" uid="uid://chmm6e3awpaa3" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0015.png" id="17_mu8vf"]
+[ext_resource type="Texture2D" uid="uid://d1gs45po51ahl" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0016.png" id="18_6mdr0"]
+[ext_resource type="Texture2D" uid="uid://bprxya8rxjtb3" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0017.png" id="19_xvpl8"]
+[ext_resource type="Texture2D" uid="uid://b3ktyfv6eqb5s" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0018.png" id="20_0tdlg"]
+[ext_resource type="Texture2D" uid="uid://b2m6rric5m280" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0019.png" id="21_48tsr"]
+[ext_resource type="Texture2D" uid="uid://dy7xxsvf1hst7" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0020.png" id="22_lm0t6"]
+[ext_resource type="Texture2D" uid="uid://drkqj004qtrem" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0021.png" id="23_nrg4b"]
+[ext_resource type="Texture2D" uid="uid://bhj2mxt5nm0kn" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0022.png" id="24_clys0"]
+[ext_resource type="Texture2D" uid="uid://cagil6gc8ebtf" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0023.png" id="25_iv0vh"]
+[ext_resource type="Texture2D" uid="uid://dmp0r8hhfb343" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0024.png" id="26_hqkfj"]
+[ext_resource type="Texture2D" uid="uid://dlkk78mlp3dop" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0025.png" id="27_16o8c"]
+[ext_resource type="Texture2D" uid="uid://bd0md1f6dbxmd" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0026.png" id="28_84os0"]
+[ext_resource type="Texture2D" uid="uid://bm3p68bd8m41t" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0027.png" id="29_qdb7d"]
+[ext_resource type="Texture2D" uid="uid://8capqm4tyv6i" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0028.png" id="30_hr2qi"]
+[ext_resource type="Texture2D" uid="uid://dy1shds58pkgo" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0029.png" id="31_6pxdm"]
+[ext_resource type="Texture2D" uid="uid://bnaf332pp2xf" path="res://assets/spritesheets/No squashingframes/no_squash_and_stretch0030.png" id="32_5yion"]
+[ext_resource type="PackedScene" uid="uid://cnxorqle5ckdg" path="res://rolling_door.tscn" id="34_e251k"]
+[ext_resource type="Script" uid="uid://qgg0xc3n3t5q" path="res://audio_stream_player.gd" id="35_ay6f4"]
+[ext_resource type="AudioStream" uid="uid://cd7bjsbpgs21w" path="res://assets/sfx/garage door opening.wav" id="36_4v5da"]
+[ext_resource type="AudioStream" uid="uid://c1acusyh4wxng" path="res://assets/sfx/scroll opening OR scroll flying woosh.wav" id="37_uys86"]
+[ext_resource type="AudioStream" uid="uid://l04jt5gqdw68" path="res://assets/sfx/name disappearing with fairy chimes.wav" id="38_u71l5"]
+[ext_resource type="AudioStream" uid="uid://c6pkv1da217a1" path="res://assets/sfx/swoosh-06-351021.mp3" id="39_jq0mm"]
+
+[sub_resource type="Animation" id="Animation_8kjn6"]
+length = 0.001
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScrollSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_8kjn6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScrollSprite/ScrollMask:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(110.5, 596.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScrollSprite/ScrollMask:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(928.5, 248.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScrollSprite/ScrollMask/Panel:global_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1079, -3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScrollSprite/ScrollMask/Panel:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1926.5, 1104)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RollingDoor:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3840, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hbgwo"]
 resource_name = "unroll"
@@ -99,74 +181,28 @@ tracks/4/keys = {
 "values": [Vector2(1926.5, 1104), Vector2(1926.5, 1104)]
 }
 
-[sub_resource type="Animation" id="Animation_8kjn6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_e251k"]
+resource_name = "vault door"
+length = 4.5
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScrollSprite:texture")
+tracks/0/path = NodePath("RollingDoor:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_8kjn6")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ScrollSprite/ScrollMask:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(110.5, 596.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ScrollSprite/ScrollMask:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(928.5, 248.5)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ScrollSprite/ScrollMask/Panel:global_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1079, -3)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ScrollSprite/ScrollMask/Panel:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1926.5, 1104)]
+"values": [Vector2(0, 0), Vector2(3840, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1i56o"]
 _data = {
 &"RESET": SubResource("Animation_8kjn6"),
-&"unroll": SubResource("Animation_hbgwo")
+&"unroll": SubResource("Animation_hbgwo"),
+&"vault door": SubResource("Animation_e251k")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu2w7"]
@@ -226,3 +262,14 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
+
+[node name="RollingDoor" parent="." instance=ExtResource("34_e251k")]
+layout_mode = 0
+offset_left = 3840.0
+offset_right = 5760.0137
+offset_bottom = 1080.0
+scale = Vector2(2, 2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("35_ay6f4")
+streams = Array[AudioStream]([ExtResource("36_4v5da"), ExtResource("37_uys86"), ExtResource("38_u71l5"), ExtResource("39_jq0mm")])

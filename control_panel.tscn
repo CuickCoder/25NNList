@@ -79,13 +79,12 @@ size_flags_vertical = 3
 theme = ExtResource("3_1x1sv")
 text = "Load Nice List"
 
-[node name="PlayAudioHint" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
+[node name="ToggleVaultDoor" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_1x1sv")
 theme_type_variation = &"RedButton"
-disabled = true
-text = "Play Audio Hint"
+text = "Toggle Vault Door"
 
 [node name="OpenListWindow" type="Button" parent="Vox/ControlButtons/VBoxContainer"]
 layout_mode = 2
@@ -213,6 +212,7 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/LoadNaughty" to="." method="change_state" binds= ["NAUGHTY"]]
 [connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/LoadNice" to="." method="change_state" binds= ["NICE"]]
+[connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/ToggleVaultDoor" to="." method="_toggle_vault_door"]
 [connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/OpenListWindow" to="." method="_open_list_window"]
 [connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/ResetList" to="." method="reset_list"]
 [connection signal="pressed" from="Vox/ControlButtons/VBoxContainer/CloseListWindow" to="." method="close_list_window"]

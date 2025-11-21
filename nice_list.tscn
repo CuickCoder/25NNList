@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cflq1cf18t0cy" path="res://list_script.gd" id="1_jmjmp"]
 [ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="2_fao6l"]
-[ext_resource type="Texture2D" uid="uid://1mpk04syaer5" path="res://assets/drummer drumming.png" id="3_kp2kh"]
-[ext_resource type="Texture2D" uid="uid://buqhn6aln8r13" path="res://assets/FIVE GOLDEN RIIIIIIIINGS.png" id="4_orc12"]
+[ext_resource type="Texture2D" uid="uid://1mpk04syaer5" path="res://assets/list icons/drummer drumming.png" id="3_kp2kh"]
+[ext_resource type="Texture2D" uid="uid://buqhn6aln8r13" path="res://assets/list icons/FIVE GOLDEN RIIIIIIIINGS.png" id="4_orc12"]
 [ext_resource type="Script" uid="uid://iw0xtb6o2iuq" path="res://player_name.gd" id="5_5ko5n"]
-[ext_resource type="Texture2D" uid="uid://cke6xrbap1mfw" path="res://assets/Swan a swimming.png" id="5_s4t6m"]
-[ext_resource type="Texture2D" uid="uid://c1sxxuvv0wdjr" path="res://assets/lord a leaping.png" id="6_1qbg8"]
+[ext_resource type="Texture2D" uid="uid://cke6xrbap1mfw" path="res://assets/list icons/Swan a swimming.png" id="5_s4t6m"]
+[ext_resource type="Texture2D" uid="uid://c1sxxuvv0wdjr" path="res://assets/list icons/lord a leaping.png" id="6_1qbg8"]
 
 [sub_resource type="Animation" id="Animation_4y1km"]
 length = 0.001
@@ -64,6 +64,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_iraxc"]
 resource_name = "fade_in_player_name"
+length = 5.65
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,7 +72,7 @@ tracks/0/path = NodePath("Names/Name3:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 5.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -94,14 +95,15 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_erxtm"]
 resource_name = "fade_out_player_name"
+length = 5.65
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Names/Name3:self_modulate")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 5.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]

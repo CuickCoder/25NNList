@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cd7bjsbpgs21w"
+path="res://.godot/imported/garage door opening.wav-64721f3670d6328a580b851135829c14.sample"
+
+[deps]
+
+source_file="res://assets/sfx/garage door opening.wav"
+dest_files=["res://.godot/imported/garage door opening.wav-64721f3670d6328a580b851135829c14.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

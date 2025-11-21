@@ -1,12 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://caskco6oi8ur3"]
+[gd_scene load_steps=16 format=3 uid="uid://caskco6oi8ur3"]
 
 [ext_resource type="Script" uid="uid://cflq1cf18t0cy" path="res://list_script.gd" id="1_16oxf"]
 [ext_resource type="Theme" uid="uid://cs3o5746fd4tl" path="res://control_panel.tres" id="2_ve5nc"]
-[ext_resource type="Texture2D" uid="uid://btkg4a2kxlx3g" path="res://assets/piper piping.png" id="3_4y1km"]
-[ext_resource type="Texture2D" uid="uid://2pl0fru1qao6" path="res://assets/lady dancing.png" id="4_r6wbo"]
-[ext_resource type="Texture2D" uid="uid://bd1lyowtg6off" path="res://assets/maid a milking.png" id="5_erxtm"]
+[ext_resource type="Texture2D" uid="uid://btkg4a2kxlx3g" path="res://assets/list icons/piper piping.png" id="3_4y1km"]
+[ext_resource type="Texture2D" uid="uid://2pl0fru1qao6" path="res://assets/list icons/lady dancing.png" id="4_r6wbo"]
+[ext_resource type="Texture2D" uid="uid://bd1lyowtg6off" path="res://assets/list icons/maid a milking.png" id="5_erxtm"]
 [ext_resource type="Script" uid="uid://iw0xtb6o2iuq" path="res://player_name.gd" id="5_iraxc"]
-[ext_resource type="Texture2D" uid="uid://dgsw65p0u61oo" path="res://assets/partridge in a pear tree.png" id="6_iraxc"]
+[ext_resource type="Texture2D" uid="uid://dgsw65p0u61oo" path="res://assets/list icons/partridge in a pear tree.png" id="6_iraxc"]
+[ext_resource type="Texture2D" uid="uid://duyuvjoorlogw" path="res://assets/stars-png-634.png" id="8_8xlkt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xlkt"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = -323.3
+angle_max = 276.40002
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+turbulence_noise_strength = 9.31
+turbulence_noise_scale = 3.918
 
 [sub_resource type="Animation" id="Animation_4y1km"]
 length = 0.001
@@ -33,6 +47,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Names/Name3/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Names/Name3/GPUParticles2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(657.5, 466.5)]
 }
 
 [sub_resource type="Animation" id="Animation_ve5nc"]
@@ -64,6 +102,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_iraxc"]
 resource_name = "fade_in_player_name"
+length = 5.65
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,7 +110,7 @@ tracks/0/path = NodePath("Names/Name3:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 5.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -94,6 +133,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_erxtm"]
 resource_name = "fade_out_player_name"
+length = 5.65
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,10 +141,34 @@ tracks/0/path = NodePath("Names/Name3:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Names/Name3/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Names/Name3/GPUParticles2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(657.5, 0), Vector2(0, 0), Vector2(657.5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6wbo"]
@@ -215,6 +279,17 @@ text = "NAME MCNAMEFACE: NAUGHTY"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_iraxc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Names/Name3"]
+position = Vector2(657.5, 466.5)
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 16
+texture = ExtResource("8_8xlkt")
+lifetime = 1.5
+randomness = 0.5
+fixed_fps = 24
+process_material = SubResource("ParticleProcessMaterial_8xlkt")
 
 [node name="Symbol3" type="Control" parent="Names"]
 custom_minimum_size = Vector2(0, 200)
