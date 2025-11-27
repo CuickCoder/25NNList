@@ -266,7 +266,6 @@ grow_vertical = 2
 rotation = 1.5707964
 
 [node name="RollingDoor" parent="." instance=ExtResource("34_e251k")]
-visible = false
 layout_mode = 0
 offset_left = 3840.0
 offset_right = 5760.0137
