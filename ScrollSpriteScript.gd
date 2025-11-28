@@ -7,28 +7,25 @@ func _ready() -> void:
 	pass 
 
 func _process(delta: float) -> void:
-	if !is_any_animation_playing():
-		scrollSway(delta)
-	else: 
-		sway_timer = 0.0 #Gotta reset this! Otherwise scroll snaps to previous pos
-		resetScrollRotation(delta)
+	handleScrollSwaying(delta)
 	pass
-	
-func scrollSway(delta):
-	sway_timer += delta * sway_speed
-	rotation_degrees = sin(sway_timer) * max_angle
-		
-func resetScrollRotation(delta): 
-	rotation = lerp_angle(rotation, 0.0, delta * 10.0)
-	
+
+func handleScrollSwaying(delta):
+	if !is_any_animation_playing():
+		#if no animation is playing, we can sway the scroll with a sine wave
+		sway_timer += delta * sway_speed
+		rotation_degrees = sin(sway_timer) * max_angle
+	else: 
+		#quickly rotate the scroll back to 0 if animation is playing
+		rotation = lerp_angle(rotation, 0.0, delta * 10.0)
+		#Reset this! Otherwise scroll sway resumes at previous rotation
+		sway_timer = 0.0 
+	pass
+
 func is_any_animation_playing() -> bool:
-	#grab all the nodes of type "AnimationPlayer"
 	var allAnimPlayers = get_tree().get_root().find_children(
 		"AnimationPlayer","AnimationPlayer",true,false)
-	#return TRUE if any of the animation players we found are playing anything
 	for n in allAnimPlayers:
 		if n.is_playing():
-			#print(n.name + " playing " + n.current_animation)
 			return true
-	#no animationplayers are playing, return false
 	return false
